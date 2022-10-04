@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
 
 export const AppContainer = styled.div`
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
 	position: relative;
 `;
 
@@ -29,33 +30,25 @@ export const HomepageContainer = styled.div`
 
 	& nav {
 		margin: auto;
-		width: 500px;
+		width: 420px;
 		display: flex;
 		justify-content: flex-end;
 	}
 
-	& nav a {
-		display: inline-block;
-		padding-left: 10px;
-		color: black;
-		text-transform: capitalize;
-	}
-
-	& button {
+	& nav button {
 		margin-left: 10px;
-	}
-
-	& button:disabled {
-		background-color: midnightblue;
-		color: white;
 	}
 `;
 
 export const WalletContainer = styled.div`
-	width: 80%;
+	width: 90%;
 	margin: 0px auto;
 	padding: 20px;
-	background-color: green;
+
+	& > h3 {
+		margin: 1.5rem;
+		text-align: center;
+	}
 `;
 
 export const HeaderContainer = styled.div`
@@ -87,19 +80,20 @@ export const NavContainer = styled.nav`
 `;
 
 export const FormContainer = styled.div`
-	width: 500px;
+	width: 400px;
 	margin: auto;
+
+	& div {
+		margin: 5px auto;
+	}
+
 	& form {
 		margin: 20px auto;
 	}
 
 	& button {
 		display: block;
-		margin: auto;
-		width: 100px;
-		border: 1px solid midnightblue;
-		background-color: white;
-		color: midnightblue;
+		margin: 0.5rem auto;
 	}
 
 	& a {
@@ -119,14 +113,14 @@ export const InputContainer = styled.div`
 		text-align: right;
 		margin-right: 10px;
 	}
-
-	& input {
-		width: 350px;
-		padding: 10px 20px;
-		border: 1px solid midnightblue;
-		border-radius: 3px;
-	}
 `;
+
+/*
+export const CustomInput = styled(Input)`
+	width: 350px;
+	border: 1px solid midnightblue;
+`;
+*/
 
 export const CheckboxContainer = styled.div`
 	color: midnightblue;
@@ -147,7 +141,43 @@ export const FooterContainer = styled.div`
 	color: white;
 	width: 100%;
 	padding: 10px 20px;
-	position: absolute;
+	position: fixed;
 	left: 0;
 	bottom: 0;
+`;
+
+export const SummaryContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2rem;
+`;
+
+export const InfoContainer = styled.div`
+	padding: 20px 40px;
+	border: 2px solid midnightblue;
+	border-radius: 5px;
+`;
+
+export const SendFundContainer = styled.div`
+	width: 600px;
+	margin: 2rem auto;
+	text-align: center;
+	color: midnightblue;
+`;
+
+export const LastAddressContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	& div {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+`;
+
+export const TransactionHistoryContainer = styled.div`
+	margin: 20px auto;
+	margin-bottom: 50px;
 `;
