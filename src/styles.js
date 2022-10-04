@@ -43,9 +43,14 @@ export const WalletContainer = styled.div`
 	margin: 0px auto;
 	padding: 20px;
 
+	& h1 {
+		color: midnightblue;
+	}
+
 	& > h3 {
 		margin: 1.5rem;
 		text-align: center;
+		color: midnightblue;
 	}
 `;
 
@@ -114,7 +119,8 @@ export const FooterContainer = styled.div`
 export const SummaryContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin-top: 2rem;
+	margin: 2rem auto;
+	width: 720px;
 `;
 
 export const InfoContainer = styled.div`
@@ -134,6 +140,8 @@ export const LastAddressContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 720px;
+	margin: auto;
 
 	& div {
 		display: flex;
@@ -143,6 +151,7 @@ export const LastAddressContainer = styled.div`
 `;
 
 export const TransactionHistoryContainer = styled.div`
+	width: 720px;
 	margin: 20px auto;
 	margin-bottom: 50px;
 `;
