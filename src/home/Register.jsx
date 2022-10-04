@@ -53,7 +53,7 @@ export default function Register() {
 					size="small"
 					required
 					fullWidth
-					sx={{ margin: 1 }}
+					sx={{ margin: 0.5 }}
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 					helperText="Please enter a valid email."
@@ -64,7 +64,7 @@ export default function Register() {
 					size="small"
 					required
 					fullWidth
-					sx={{ margin: 1 }}
+					sx={{ margin: 0.5 }}
 					value={username}
 					onChange={(e) => setUsername(e.target.value)}
 					helperText="Must include a lower and capital letter, at least 10 characters"
@@ -75,7 +75,7 @@ export default function Register() {
 					size="small"
 					required
 					fullWidth
-					sx={{ margin: 1 }}
+					sx={{ margin: 0.5 }}
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 					helperText="Must include at least a lowercase letter, an uppercase letter, a number, and a symbol. Must have at least 12 characters."
@@ -86,7 +86,7 @@ export default function Register() {
 					size="small"
 					required
 					fullWidth
-					sx={{ margin: 1 }}
+					sx={{ margin: 0.5 }}
 					value={password2}
 					onChange={(e) => setPassword2(e.target.value)}
 				/>
@@ -95,7 +95,7 @@ export default function Register() {
 						<Checkbox checked={marked} onChange={(e) => setMarked(!marked)} />
 					}
 					label="Do you agree with the terms and conditions?"
-					sx={{ margin: 1 }}
+					sx={{ margin: 0.5 }}
 				></FormControlLabel>
 				<Button type="submit" variant="contained" disabled={!valid}>
 					Register

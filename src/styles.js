@@ -19,7 +19,7 @@ export const HomepageContainer = styled.div`
 	& h3 {
 		font-size: 1.5rem;
 		text-align: center;
-		margin-bottom: 0.5rem;
+		margin: 0.5rem 0 1rem 0;
 	}
 
 	& span {
@@ -94,16 +94,6 @@ export const FormContainer = styled.div`
 		color: midnightblue;
 		display: block;
 		text-align: right;
-	}
-`;
-
-export const CheckboxContainer = styled.div`
-	color: midnightblue;
-	padding-left: 130px;
-	margin-bottom: 10px;
-
-	& input {
-		margin-right: 12px;
 	}
 `;
 
