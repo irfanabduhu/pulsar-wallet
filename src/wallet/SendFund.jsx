@@ -1,4 +1,4 @@
-import { SendFundContainer, FormContainer } from "./styles";
+import { SendFundContainer, FormContainer } from "../styles";
 import { Button, TextField } from "@mui/material";
 
 export default function SendFund() {

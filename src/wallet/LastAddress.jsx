@@ -1,11 +1,5 @@
-import { LastAddressContainer } from "./styles";
-import {
-	FormControl,
-	InputLabel,
-	Input,
-	Button,
-	TextField,
-} from "@mui/material";
+import { LastAddressContainer } from "../styles";
+import { Button, TextField } from "@mui/material";
 import { ContentCopy } from "@mui/icons-material";
 
 export default function LastAddress() {

@@ -1,9 +1,9 @@
 import Login from "./Login";
-import { HomepageContainer } from "./styles";
+import { HomepageContainer } from "../styles";
 import { useState } from "react";
 import Register from "./Register";
 import { Button } from "@mui/material";
-import Header from "./Header";
+import Header from "../Header";
 
 export default function Homepage() {
 	const [isLogin, setLoginMode] = useState(true);

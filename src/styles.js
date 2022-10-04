@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 export const AppContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
-	width: 100vw;
 	position: relative;
 `;
 
@@ -15,13 +13,13 @@ export const HomepageContainer = styled.div`
 	& h1 {
 		font-size: 3rem;
 		text-align: center;
-		margin: 2rem 0;
+		margin: 0.5rem 0;
 	}
 
 	& h3 {
 		font-size: 1.5rem;
 		text-align: center;
-		margin-bottom: 2rem;
+		margin-bottom: 0.5rem;
 	}
 
 	& span {
@@ -30,7 +28,7 @@ export const HomepageContainer = styled.div`
 
 	& nav {
 		margin: auto;
-		width: 420px;
+		width: 450px;
 		display: flex;
 		justify-content: flex-end;
 	}
@@ -80,15 +78,11 @@ export const NavContainer = styled.nav`
 `;
 
 export const FormContainer = styled.div`
-	width: 400px;
-	margin: auto;
+	width: 450px;
+	margin: 20px auto 50px auto;
 
 	& div {
 		margin: 5px auto;
-	}
-
-	& form {
-		margin: 20px auto;
 	}
 
 	& button {
@@ -102,25 +96,6 @@ export const FormContainer = styled.div`
 		text-align: right;
 	}
 `;
-
-export const InputContainer = styled.div`
-	display: block;
-	margin-bottom: 10px;
-
-	& label {
-		display: inline-block;
-		width: 140px;
-		text-align: right;
-		margin-right: 10px;
-	}
-`;
-
-/*
-export const CustomInput = styled(Input)`
-	width: 350px;
-	border: 1px solid midnightblue;
-`;
-*/
 
 export const CheckboxContainer = styled.div`
 	color: midnightblue;

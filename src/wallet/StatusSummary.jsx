@@ -1,4 +1,4 @@
-import { SummaryContainer, InfoContainer } from "./styles";
+import { SummaryContainer, InfoContainer } from "../styles";
 import { CheckCircle } from "@mui/icons-material";
 
 export default function StatusSummary() {

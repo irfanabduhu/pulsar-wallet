@@ -6,7 +6,7 @@ import {
 	TableContainer,
 	TableBody,
 } from "@mui/material";
-import { TransactionHistoryContainer } from "./styles";
+import { TransactionHistoryContainer } from "../styles";
 
 export default function TransactionHistory() {
 	const transactions = [

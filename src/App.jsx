@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./Homepage";
-import Wallet from "./Wallet";
+import Homepage from "./home/Homepage";
+import Wallet from "./wallet/Wallet";
 import { AppContainer } from "./styles";
 
 export default function App() {

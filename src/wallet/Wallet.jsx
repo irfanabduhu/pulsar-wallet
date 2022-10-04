@@ -1,10 +1,10 @@
 import LastAddress from "./LastAddress";
 import SendFund from "./SendFund";
 import StatusSummary from "./StatusSummary";
-import { WalletContainer } from "./styles";
+import { WalletContainer } from "../styles";
 import TransactionHistory from "./TransactionHistory";
 import { Divider } from "@mui/material";
-import Header from "./Header";
+import Header from "../Header";
 
 export default function Wallet({ fnMode }) {
 	return (

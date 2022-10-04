@@ -6,9 +6,7 @@ export default function Footer() {
 			<LogoContainer>
 				<img src="logo.png" alt="Pulsar" />
 			</LogoContainer>
-			<p>
-				&copy; All rights reserved by Pulsar {new Date().getFullYear()}
-			</p>
+			<p>&copy; All rights reserved by Pulsar {new Date().getFullYear()}</p>
 			<span>Roadmap</span>
 		</FooterContainer>
 	);
