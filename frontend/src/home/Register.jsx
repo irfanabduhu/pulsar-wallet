@@ -48,14 +48,18 @@ export default function Register() {
 
 		console.log("Submitted");
 
-		const { data } = axios.post("http://localhost:3030/api/register", {
-			email,
-			username,
-			password,
-		});
-		if (data.success) {
-			navigate("/wallet", { state: { username: data?.payload?.username } });
-		} else {
+		try {
+			const { data } = await axios.post("http://localhost:3030/api/register", {
+				email,
+				username,
+				password,
+			});
+
+			if (data.success) {
+				navigate("/wallet", { state: { username: data?.payload?.username } });
+			}
+		} catch (err) {
+			console.error(err);
 			navigate("/", { state: { failed: "registration" } });
 		}
 	}

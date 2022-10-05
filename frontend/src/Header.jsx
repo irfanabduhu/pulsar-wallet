@@ -11,13 +11,16 @@ import {
 } from "@mui/icons-material";
 import { IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { HeaderContainer, LogoContainer, NavContainer } from "./styles";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Header({ portalMode = false }) {
 	const [darkMode, setDarkMode] = useState(true);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
+	const navigate = useNavigate();
+
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
@@ -81,14 +84,21 @@ export default function Header({ portalMode = false }) {
 						</ListItemIcon>
 						Setting
 					</MenuItem>
-					<Link to="/">
-						<MenuItem>
-							<ListItemIcon>
-								<Logout fontSize="small" />
-							</ListItemIcon>
-							Log Out
-						</MenuItem>
-					</Link>
+					<MenuItem
+						onClick={async () => {
+							const { data } = await axios.get(
+								"http://localhost:3030/api/logout"
+							);
+							if (data.success) {
+								navigate("/");
+							}
+						}}
+					>
+						<ListItemIcon>
+							<Logout fontSize="small" />
+						</ListItemIcon>
+						Log Out
+					</MenuItem>
 				</div>
 			) : (
 				""

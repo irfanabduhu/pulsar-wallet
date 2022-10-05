@@ -25,14 +25,18 @@ export default function Login({ fnForget, errorMessage }) {
 			return navigate("/forget-password");
 		}
 
-		const { data } = await axios.post("http://localhost:3030/api/login", {
-			email,
-			password,
-		});
+		try {
+			const { data } = await axios.post("http://localhost:3030/api/login", {
+				email,
+				password,
+			});
 
-		if (data.success) {
-			navigate("/wallet", { state: { username: data?.payload?.username } });
-		} else {
+			console.log(data);
+			if (data.success) {
+				navigate("/wallet", { state: { username: data?.payload?.username } });
+			}
+		} catch (err) {
+			console.error(err);
 			navigate("/", { state: { failed: "login" } });
 		}
 	}

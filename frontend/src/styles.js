@@ -97,7 +97,6 @@ export const FormContainer = styled.div`
 
 	& a {
 		color: midnightblue;
-		display: block;
 		text-align: right;
 	}
 `;
@@ -127,6 +126,9 @@ export const InfoContainer = styled.div`
 	padding: 20px 40px;
 	border: 2px solid midnightblue;
 	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 `;
 
 export const SendFundContainer = styled.div`

@@ -18,6 +18,7 @@ export default function TransactionHistory() {
 			fee: 2.5,
 			confirms: "yes",
 			information: "abracadabra",
+			key: "eps",
 		},
 		{
 			date: "10 April 2022",
@@ -27,6 +28,7 @@ export default function TransactionHistory() {
 			fee: 2.5,
 			confirms: "yes",
 			information: "abracadabra",
+			key: "dep",
 		},
 		{
 			date: "10 April 2022",
@@ -36,6 +38,7 @@ export default function TransactionHistory() {
 			fee: 2.5,
 			confirms: "yes",
 			information: "abracadabra",
+			key: "gamma",
 		},
 		{
 			date: "10 April 2022",
@@ -45,6 +48,7 @@ export default function TransactionHistory() {
 			fee: 2.5,
 			confirms: "yes",
 			information: "abracadabra",
+			key: "alpha",
 		},
 	];
 
@@ -66,7 +70,7 @@ export default function TransactionHistory() {
 					</TableHead>
 					<TableBody>
 						{transactions.slice(0, 10).map((t) => (
-							<TableRow>
+							<TableRow key={t.key}>
 								<TableCell>{t.date}</TableCell>
 								<TableCell>{t.address}</TableCell>
 								<TableCell>{t.type}</TableCell>

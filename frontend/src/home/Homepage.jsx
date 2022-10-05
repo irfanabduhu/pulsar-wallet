@@ -29,7 +29,7 @@ export default function Homepage() {
 			setErrorMessage("Registration failed. Please try again.");
 			setLoginMode(false);
 		}
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [location.state]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<div>
