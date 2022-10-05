@@ -1,8 +1,9 @@
 import { FormContainer } from "../styles";
 import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { isEmail, isAlpha, isStrongPassword } from "validator";
 import { useNavigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 
 export default function Register() {
@@ -12,6 +13,7 @@ export default function Register() {
 	const [password2, setPassword2] = useState("");
 	const [valid, setValid] = useState(false);
 	const [marked, setMarked] = useState(false);
+	const captchaRef = useRef(null);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -24,6 +26,28 @@ export default function Register() {
 		);
 	}, [email, username, password, password2, marked]);
 
+	async function handleSubmit(e) {
+		e.preventDefault();
+
+		const token = captchaRef.current.getValue();
+		captchaRef.current.reset();
+
+		try {
+			const { data } = await axios.post("http://localhost:3030/api/register", {
+				email,
+				username,
+				password,
+				token,
+			});
+
+			if (data.success) {
+				navigate("/wallet", { state: { username: data?.payload?.username } });
+			}
+		} catch (err) {
+			console.error(err);
+			navigate("/", { state: { failed: "registration" } });
+		}
+	}
 	function isValidUsername(username) {
 		return (
 			username.length >= 8 &&
@@ -43,30 +67,9 @@ export default function Register() {
 		// Example: aB1@abracadabra
 	}
 
-	async function registerUser(e) {
-		e.preventDefault();
-
-		console.log("Submitted");
-
-		try {
-			const { data } = await axios.post("http://localhost:3030/api/register", {
-				email,
-				username,
-				password,
-			});
-
-			if (data.success) {
-				navigate("/wallet", { state: { username: data?.payload?.username } });
-			}
-		} catch (err) {
-			console.error(err);
-			navigate("/", { state: { failed: "registration" } });
-		}
-	}
-
 	return (
 		<FormContainer>
-			<form onSubmit={registerUser}>
+			<form onSubmit={handleSubmit}>
 				<TextField
 					type="email"
 					label="Email"
@@ -117,12 +120,11 @@ export default function Register() {
 					label="Do you agree with the terms and conditions?"
 					sx={{ margin: 0.5 }}
 				></FormControlLabel>
-				<Button
-					type="submit"
-					variant="contained"
-					disabled={!valid}
-					onClick={registerUser}
-				>
+				<ReCAPTCHA
+					sitekey="6LdZwVciAAAAAB6QdY0Usriz7Zx0Nw1w3hYmYGQ6"
+					ref={captchaRef}
+				/>
+				<Button type="submit" variant="contained" disabled={!valid}>
 					Register
 				</Button>
 			</form>

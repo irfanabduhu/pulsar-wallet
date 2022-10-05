@@ -2,6 +2,8 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const expressSession = require("express-session");
+const dotenv = require("dotenv").config();
+const axios = require("axios");
 
 const auth = require("./auth/index");
 const api = require("./api");
@@ -22,7 +24,19 @@ app.use(
 app.use(auth.passport.initialize());
 app.use(auth.passport.session());
 
-app.post("/api/login", auth.passport.authenticate("local-signin"), api.login);
+app.post(
+	"/api/login",
+	async (req, res, next) => {
+		const { token } = req.body;
+		const response = await axios.post(
+			`https:///www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_KEY}&response=${token}`
+		);
+		if (response.status(200)) return next();
+		console.error(response);
+	},
+	auth.passport.authenticate("local-signin"),
+	api.login
+);
 app.post("/api/register", api.register);
 app.get("/api/logout", api.logout);
 

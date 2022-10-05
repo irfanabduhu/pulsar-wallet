@@ -1,15 +1,17 @@
 import { FormContainer } from "../styles";
 import { Button, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isEmail } from "validator";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha";
 
-export default function Login({ fnForget, errorMessage }) {
+export default function Login({ fnForget }) {
 	const [forgetMode, setForgetMode] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [valid, setValid] = useState(false);
+	const captchaRef = useRef(null);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -19,7 +21,8 @@ export default function Login({ fnForget, errorMessage }) {
 	async function handleSubmit(e) {
 		e.preventDefault();
 
-		console.log("Login submitted");
+		const token = captchaRef.current.getValue();
+		captchaRef.current.reset();
 
 		if (forgetMode) {
 			return navigate("/forget-password");
@@ -29,6 +32,7 @@ export default function Login({ fnForget, errorMessage }) {
 			const { data } = await axios.post("http://localhost:3030/api/login", {
 				email,
 				password,
+				token,
 			});
 
 			console.log(data);
@@ -76,8 +80,12 @@ export default function Login({ fnForget, errorMessage }) {
 							}}
 						>
 							Forgot Password?
-						</a>{" "}
+						</a>
 						<br />
+						<ReCAPTCHA
+							sitekey="6LdZwVciAAAAAB6QdY0Usriz7Zx0Nw1w3hYmYGQ6"
+							ref={captchaRef}
+						/>
 					</div>
 				)}
 				<Button type="submit" variant="contained" disabled={!valid}>
