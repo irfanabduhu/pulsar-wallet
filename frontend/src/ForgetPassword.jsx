@@ -1,7 +1,7 @@
 import Header from "./Header";
 import { InstructionContainer } from "./styles";
 
-export default function ConfirmEmail() {
+export default function ForgetPassword() {
 	return (
 		<div>
 			<Header />

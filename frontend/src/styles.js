@@ -156,7 +156,7 @@ export const TransactionHistoryContainer = styled.div`
 	margin-bottom: 50px;
 `;
 
-export const EmailConfirmationContainer = styled.div`
+export const InstructionContainer = styled.div`
 	width: 600px;
 	margin: 30vh auto;
 	padding: 2rem;

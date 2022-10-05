@@ -3,6 +3,7 @@ import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { isEmail, isAlpha, isStrongPassword } from "validator";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Register() {
 	const [email, setEmail] = useState("");
@@ -11,7 +12,6 @@ export default function Register() {
 	const [password2, setPassword2] = useState("");
 	const [valid, setValid] = useState(false);
 	const [marked, setMarked] = useState(false);
-
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -43,10 +43,21 @@ export default function Register() {
 		// Example: aB1@abracadabra
 	}
 
-	function registerUser(e) {
+	async function registerUser(e) {
 		e.preventDefault();
 
-		navigate("/confirm-email");
+		console.log("Submitted");
+
+		const { data } = axios.post("http://localhost:3030/api/register", {
+			email,
+			username,
+			password,
+		});
+		if (data.success) {
+			navigate("/wallet", { state: { username: data?.payload?.username } });
+		} else {
+			navigate("/", { state: { failed: "registration" } });
+		}
 	}
 
 	return (
@@ -102,7 +113,12 @@ export default function Register() {
 					label="Do you agree with the terms and conditions?"
 					sx={{ margin: 0.5 }}
 				></FormControlLabel>
-				<Button type="submit" variant="contained" disabled={!valid}>
+				<Button
+					type="submit"
+					variant="contained"
+					disabled={!valid}
+					onClick={registerUser}
+				>
 					Register
 				</Button>
 			</form>
