@@ -86,9 +86,7 @@ export default function Header({ portalMode = false }) {
           </MenuItem>
           <MenuItem
             onClick={async () => {
-              const { data } = await axios.get(
-                `http://localhost:${process.env.PORT || 3001}/api/logout`
-              );
+              const { data } = await axios.get(`/api/logout`);
               if (data.success) {
                 navigate("/");
               }

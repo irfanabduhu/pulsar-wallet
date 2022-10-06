@@ -3,7 +3,6 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const expressSession = require("express-session");
 const dotenv = require("dotenv").config();
-const axios = require("axios");
 const path = require("path");
 const Recaptcha = require("express-recaptcha").RecaptchaV2;
 
@@ -29,17 +28,6 @@ app.use(auth.passport.initialize());
 app.use(auth.passport.session());
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));
-
-// async function authRecaptcha(req, res, next) {
-//     const { token } = req.body;
-//     const response = await axios({
-//         method: "GET",
-//         url: `https:///www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_KEY}&response=${token}`,
-//         headers: {
-//             "Access-Control-Allow-Origin": "*",
-//         },
-//     });
-// }
 
 app.post(
     "/api/login",
