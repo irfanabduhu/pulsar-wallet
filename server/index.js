@@ -4,13 +4,11 @@ const cors = require("cors");
 const expressSession = require("express-session");
 const dotenv = require("dotenv").config();
 const path = require("path");
-const Recaptcha = require("express-recaptcha").RecaptchaV2;
 
 const auth = require("./auth/index");
 const api = require("./api");
 
 const app = express();
-const recaptcha = new Recaptcha(process.env.SITE_KEY, process.env.SECRET_KEY);
 
 app.use(cors());
 app.use(express.json());
@@ -31,12 +29,7 @@ app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.post(
     "/api/login",
-    recaptcha.middleware.verify,
-    (req, res, next) => {
-        if (!req.recaptcha.error) return next();
-        next(); // skip reCAPTCHA validation for now
-        // res.json({ success: false, payload: { error: "Recaptcha failed" } });
-    },
+    auth.validateToken,
     auth.passport.authenticate("local-signin"),
     api.login
 );

@@ -33,9 +33,7 @@ export default function Register() {
     captchaRef.current.reset();
 
     try {
-      // const PORT = process.env.PORT || 3001;
-      // const HOST = process.env.REACT_APP_BACKEND_HOST_NAME || "localhost";
-      const { data } = await axios.post(`/api/register`, {
+      const { data } = await axios.post(`api/register`, {
         email,
         username,
         password,
